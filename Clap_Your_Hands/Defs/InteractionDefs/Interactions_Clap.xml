@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- 击掌：社交互动，四档结果由 InteractionWorker_Clap 抽取。 -->
+  <InteractionDef>
+    <defName>Clap</defName>
+    <label>clap hands</label>
+    <workerClass>ClapYourHands.InteractionWorker_Clap</workerClass>
+    <symbol>Things/Mote/SpeechSymbols/Chitchat</symbol>
+    <initiatorXpGainSkill>Social</initiatorXpGainSkill>
+    <initiatorXpGainAmount>4</initiatorXpGainAmount>
+    <logRulesInitiator>
+      <rulesStrings>
+        <li>r_logentry->[INITIATOR_nameDef] and [RECIPIENT_nameDef] [clapped].</li>
+        <li>r_logentry->[INITIATOR_nameDef] [clapped] with [RECIPIENT_nameDef].</li>
+        <li>clapped->casually clapped hands</li>
+        <li>clapped->enthusiastically high-fived</li>
+      </rulesStrings>
+    </logRulesInitiator>
+  </InteractionDef>
+
+</Defs>

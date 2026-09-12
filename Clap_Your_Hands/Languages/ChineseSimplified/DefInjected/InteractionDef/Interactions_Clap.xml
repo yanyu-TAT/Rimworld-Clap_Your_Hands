@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <Clap.label>击掌</Clap.label>
+
+  <!-- rulesStrings 为整体替换，<li> 结构与 Def 内一致 -->
+  <Clap.logRulesInitiator.rulesStrings>
+    <li>r_logentry->[INITIATOR_nameDef]和[RECIPIENT_nameDef][clapped]。</li>
+    <li>r_logentry->[INITIATOR_nameDef]跟[RECIPIENT_nameDef][clapped]。</li>
+    <li>clapped->随意地击了个掌</li>
+    <li>clapped->激情四射地击了个掌</li>
+  </Clap.logRulesInitiator.rulesStrings>
+
+</LanguageData>

@@ -105,6 +105,19 @@
 ✅ 避免过度注释 — 仅在逻辑不自明处写注释
 ```
 
+### 注释规范
+
+```
+✅ 注释只描述**当前状态** —— 这个类型 / 成员现在是什么、做什么
+✅ 力求简短，一两句话概括即可
+✅ 仅在逻辑不自明处、或需说明接口契约与约束时才写注释
+✅ 实现发生变化时同步更新注释 —— 与实现不符的注释比冗长的注释更糟
+❌ 不写历史状态（"此前…"、"原本…"、"已由…改为…"）
+❌ 不写设计理由与推导（"为了…"、"因此…"、"之所以…"、"为什么不直接用…"）
+❌ 不写方案对比与前后变化（"而不再需要…"、"比…更…"）
+❌ 不写改动过程与决策记录 —— 改动缘由属于 `docs/`、`plans/` 与提交信息
+```
+
 ### XML 定义
 
 ```
@@ -141,6 +154,19 @@
 | 文件 | 职责 |
 | --- | --- |
 | `ClapYourHandsMod.cs` | 模组主类（原版 `Verse.Mod`）；日志前缀 `LogPrefix` |
+| `ClapDefOf.cs` | `[DefOf]` Def 引用缓存（字段名必须与 `defName` 完全一致） |
+| `ClapOutcome.cs` | 击掌结果档位枚举（枚举值同时是权重数组下标） |
+| `ClapUtility.cs` | **核心逻辑**：抽取权重、好感度曲线（`SimpleCurve`）、结果抽取、结算应用、可用手判定（`TryGetHand`）、增益与冷却写入。**所有可调数值集中在本文件顶部** |
+| `InteractionWorker_Clap.cs` | 原版扩展点：`RandomSelectionWeight`（触发权重与排除）+ `Interacted`（结算入口） |
+| `Hediff_ClapBuff.cs` | 12h 增益载体：等级合并（取最高／同级覆盖时长）；时长用原版 `HediffComp_Disappears.SetDuration` |
+| `Hediff_ClapCooldown.cs` | 24h 冷却载体：`Visible => false` 隐藏；时长同样用 `HediffComp_Disappears` |
+| `ClapDebug.cs` | 开发期调试开关（静态 bool，**不参与存档**）；`WeightMultiplier` 常量 |
+| `DebugTabMenu_Clap.cs` | 把 `ClapDebug` 的静态开关**并入原版 settings 分页**（复用共享的 `absRoot`，归类到 `Clap` 分类；复选框由 `DebugActionNode.settingsField` 渲染） |
+| `Defs/DebugTabMenuDefs/` | `DebugTabMenuDef`（注册入口；零补丁限制：分页栏会随之多一个 tab，其内容复用原版 Settings 节点） |
+| `Defs/InteractionDefs/` | 互动定义（`Clap`） |
+| `Defs/ThoughtDefs/` | 四档结果想法（Social；`baseMoodEffect` + `baseOpinionOffset`） |
+| `Defs/HediffDefs/` | `Clap_Buff`（3 级增益）、`Clap_Cooldown`（隐藏冷却） |
+| `Languages/` | 中英逐键对称的本地化文本 |
 
 > 新增模块/文件时同步更新本表。
 
@@ -151,6 +177,7 @@
 | #  | 易错点 | 正确做法 |
 | -- | --- | --- |
 | 1  | 凭记忆写 RimWorld API，方法/字段不存在 | 先 `ilspycmd` 反编译核对 |
+| 2  | 复用原版的「自动挑选 / 自动填充」逻辑（如 `HediffDef.defaultInstallPart`、原版工厂方法）时，未核对其**筛选条件** | 先反编译确认它怎么筛：原版常只按 Def 匹配、**不校验可用性**（如 `body.AllParts` 含缺失部位却不过滤），缺数据会在更晚的结算期才炸（见 `B-04` BUG-001） |
 
 ***
 

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <!-- 灵感开始信件的正文前缀（由 ClapUtility 作为 reason 传入） -->
+  <ClapYourHands.InspirationReason>伴随着清脆的掌声，{PAWN_nameDef}突然想到了一个好点子。</ClapYourHands.InspirationReason>
+
+</LanguageData>

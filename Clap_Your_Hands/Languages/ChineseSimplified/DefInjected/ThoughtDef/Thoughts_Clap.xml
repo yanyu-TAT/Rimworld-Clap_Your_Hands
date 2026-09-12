@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <Clap_Bad.stages.0.label>糟糕的击掌</Clap_Bad.stages.0.label>
+  <Clap_Bad.stages.0.description>我们对彼此挥出手掌却挥空了。好尴尬……</Clap_Bad.stages.0.description>
+
+  <Clap_Normal.stages.0.label>普通的击掌</Clap_Normal.stages.0.label>
+  <Clap_Normal.stages.0.description>我们随便击了次掌，也就那样。</Clap_Normal.stages.0.description>
+
+  <Clap_Good.stages.0.label>不错的击掌</Clap_Good.stages.0.label>
+  <Clap_Good.stages.0.description>这一掌拍得恰到好处，不赖。</Clap_Good.stages.0.description>
+
+  <Clap_Perfect.stages.0.label>完美的击掌</Clap_Perfect.stages.0.label>
+  <Clap_Perfect.stages.0.description>时机分毫不差，清脆的掌声让我感觉无所不能！</Clap_Perfect.stages.0.description>
+
+</LanguageData>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+  <!-- 把原版 settings 分页的菜单类换成本模组的扩展版，以并入 Clap 分类的开关。 -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/DebugTabMenuDef[defName="Settings"]/menuClass</xpath>
+    <value>
+      <menuClass>ClapYourHands.DebugTabMenu_ClapSettings</menuClass>
+    </value>
+  </Operation>
+
+</Patch>
