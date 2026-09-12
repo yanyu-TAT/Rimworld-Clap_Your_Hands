@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE ModMetaData>
+<ModMetaData>
+    <name>Clap Your Hands</name>
+    <author>yanyu</author>
+    <description>加入新的社交互动：击掌。
+殖民者之间可以互相击掌，击掌结果分为糟糕、普通、不错、完美四档，为双方带来不同的情绪与好感度变化。
+完美击掌额外给予随机增益，效果持续 12 小时。</description>
+    <packageId>yanyu.clapyourhands</packageId>
+    <modVersion>0.0.1</modVersion>
+    <modClass>ClapYourHands.ClapYourHandsMod</modClass>
+
+    <supportedVersions>
+        <li>1.6</li>
+    </supportedVersions>
+
+    <loadAfter>
+        <li>Ludeon.RimWorld</li>
+    </loadAfter>
+</ModMetaData>

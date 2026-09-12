@@ -1,0 +1,26 @@
+# 构建产物与第三方程序集
+obj/
+bin/
+Clap_Your_Hands/Assemblies/*
+!Clap_Your_Hands/Assemblies/Clap_Your_Hands.dll
+
+# 参考资料（原版 XML / 反编译输出 / 第三方 DLL）
+Data/
+lib/
+decompiledFiles/
+
+# 编辑器与工具目录
+.vs/
+.vscode/
+.cursor/
+.trae/
+ExampleMods/
+
+# 运行日志与临时文件
+Player.log
+~$*
+
+# 开发计划与本地环境
+plans/
+.dsh-pyenv/
+.dsh-dotnet/

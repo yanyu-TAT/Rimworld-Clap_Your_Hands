@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>10.0</LangVersion>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <AssemblyName>Clap_Your_Hands</AssemblyName>
+    <RootNamespace>ClapYourHands</RootNamespace>
+    <DebugType>portable</DebugType>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <!-- 构建产物直出 mod 目录下的 Assemblies/，供游戏直接加载 -->
+  <PropertyGroup>
+    <OutputPath>$(MSBuildThisFileDirectory)Assemblies\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+  </PropertyGroup>
+
+  <!-- 游戏程序集路径：本机 Steam 安装目录，可用 -p:RimWorldManagedDir=... 覆盖 -->
+  <PropertyGroup>
+    <RimWorldManagedDir Condition="'$(RimWorldManagedDir)' == ''">D:\steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed</RimWorldManagedDir>
+  </PropertyGroup>
+
+  <!-- 只保留最小必需引用：原版代码 + Unity 核心模块（零第三方依赖） -->
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(RimWorldManagedDir)\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(RimWorldManagedDir)\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+
+  <!-- Defs / Languages 中不放 C# 源码，避免被默认 glob 收编 -->
+  <ItemGroup>
+    <Compile Remove="Defs\**" />
+    <Compile Remove="Languages\**" />
+    <Compile Remove="Patches\**" />
+    <None Remove="Defs\**" />
+    <None Remove="Languages\**" />
+  </ItemGroup>
+
+</Project>
